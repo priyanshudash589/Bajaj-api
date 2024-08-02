@@ -25,7 +25,7 @@ function App() {
         throw new Error('Invalid input: expected {"data": [...]}');
       }
       console.log('Sending data:', parsedInput);
-      const res = await axios.post('http://localhost:5000/bfhl', parsedInput);
+      const res = await axios.post('https://bajaj-priyanshu.syn4ck.workers.dev/bfhl', parsedInput);
       console.log('Received response:', res.data);
       setResponse(res.data);
     } catch (err) {
