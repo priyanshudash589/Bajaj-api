@@ -18,13 +18,23 @@ function App() {
     e.preventDefault();
     setError('');
     setResponse(null);
-
+  
     try {
       const parsedInput = JSON.parse(input);
+      if (!parsedInput.data || !Array.isArray(parsedInput.data)) {
+        throw new Error('Invalid input: expected {"data": [...]}');
+      }
+      console.log('Sending data:', parsedInput);
       const res = await axios.post('http://localhost:5000/bfhl', parsedInput);
+      console.log('Received response:', res.data);
       setResponse(res.data);
     } catch (err) {
-      setError(err.message);
+      console.error('Error:', err);
+      if (err instanceof SyntaxError) {
+        setError('Invalid JSON format');
+      } else {
+        setError(err.response?.data?.message || err.message);
+      }
     }
   };
 
@@ -55,7 +65,7 @@ function App() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder='Enter JSON here'
-          className='border-black border-[1px] outline-none rounded-full w-[15rem] p-5 '
+          className='border-black border-[1px] outline-none rounded-full w-[15rem] p-5'
         />
         <button type="submit" className='bg-black text-white p-3 w-[5rem] rounded-xl'>Submit</button>
       </form>
@@ -74,3 +84,5 @@ function App() {
 }
 
 export default App;
+
+// {"data" : ["M","45","z","4"]}
