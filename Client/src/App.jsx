@@ -49,7 +49,7 @@ function App() {
   };
 
   return (
-    <div className="bg-blue-gray-500 h-screen w-screen flex justify-center items-center">
+    <div className="bg-slate-500 h-screen w-screen flex justify-center items-center">
       <form onSubmit={handleSubmit}>
         <textarea
           value={input}
