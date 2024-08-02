@@ -6,10 +6,14 @@ const multer = require('multer');
 const app = express();
 const port = 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGIN || 'http://localhost:3000'
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use((req, res) => {
+  res.status(404).send('Not Found');
+});
 
 function findHighestAlphabet(alphabets) {
     if (alphabets.length === 0) return [];
