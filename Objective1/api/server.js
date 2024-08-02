@@ -17,15 +17,15 @@ function findHighestAlphabet(alphabets) {
       current.toLowerCase() > max.toLowerCase() ? current : max
     )];
 }
-app.get('/', (req, res)=>{
+app.get('/api/', (req, res)=>{
   res.send("Welcome to the server")
 })
 
-app.get('/bfhl', (req, res) => {
+app.get('/api/bfhl', (req, res) => {
   res.status(200).json({ operation_code: 1 });
 });
 
-app.post('/bfhl', (req, res) => {
+app.post('/api/bfhl', (req, res) => {
   console.log('Received request:', req.body);
   const { data } = req.body;
 
