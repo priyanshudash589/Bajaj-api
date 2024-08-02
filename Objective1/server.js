@@ -17,6 +17,9 @@ function findHighestAlphabet(alphabets) {
       current.toLowerCase() > max.toLowerCase() ? current : max
     )];
 }
+app.get('/', (req, res)=>{
+  res.send("Welcome to the server")
+})
 
 app.get('/bfhl', (req, res) => {
   res.status(200).json({ operation_code: 1 });
