@@ -5,11 +5,11 @@
     "express": "^4.19.2"
   },
   "scripts": {
-    "start": "node api/bfhl.js"
+    "start": "node server.js"
   },
   "name": "objective1",
   "version": "1.0.0",
-  "main": "api/bfhl.js",
+  "main": "server.js",
   "author": "",
   "license": "ISC",
   "description": ""
